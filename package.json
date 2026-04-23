@@ -1,0 +1,36 @@
+{
+  "name": "capacity-fullstack-template",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write .",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:generate": "pnpm --filter @capacity/backend exec prisma generate",
+    "db:migrate": "pnpm --filter @capacity/backend exec prisma migrate dev",
+    "db:seed": "pnpm --filter @capacity/backend exec prisma db seed",
+    "db:studio": "pnpm --filter @capacity/backend exec prisma studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.9.6",
+    "typescript": "^6.0.3",
+    "prettier": "^3.8.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "esbuild",
+      "prisma"
+    ]
+  }
+}
